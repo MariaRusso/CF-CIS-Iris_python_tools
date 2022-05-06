@@ -1,19 +1,13 @@
 # CF-CIS-Iris_python_tools
 
-Functions to convert cf variables into cis, iris or xarray format. 
-This is useful as it allows to use CF for fast reading of large 
-files and then convert to the appropriate format to interface with 
+This repository contains open source code to process model data. A brief description of the directories is given here (for more details refer to each directory README file).
+
+- *Modules*: contains functions to convert cf variables into 
+cis, iris or xarray format. CF reads large files much faster than    
+iris or cis. These functions allow you to use CF for fast reading   
+but then converting to the appropriate format to interface with 
 existing scripts using cis, iris or xarray.
 
-The module **convert_CFvar.py** contains three functions:  
-- *cis_from_cf*: produces a cis variable from a cf variable  
-new_cis_var = cis_from_cf(my_cf_var)
-
-- *iris_from_cf*: produces a iris variable from a cf variable  
-new_iris_var = iris_from_cf(my_cf_var)
-
-- *xarray_from_cf*: produces an xarray variable from a cf variable  
-new_xarray_var = xarray_from_cf(my_cf_var)
-
-This currently works for gridded variables only and does not consider
-auxilliary coordinates.
+- *UM_flight*: contains python routines and functions supporting  
+output of the *Unified Model*, *UKCA* or *UKESM* on specified  
+aircraft flighttracks
