@@ -193,10 +193,12 @@ else:
 stash_save=[]
 var_save=[]
 campaign_history=[]
+
 # Find out days within UM cycle for which file track data exists (so we only read and process UM output for those days)
 flight_dates=sorted(os.listdir(trackdir))
 flight_dates=[filename for filename in flight_dates if cycle_date in filename]
 read_dates=[filename[filename.index(cycle_date):filename.index(cycle_date)+8] for filename in flight_dates]
+
 # Check Daily subdirectory and prepare appropriately
 daily_dir = outdir + 'Daily/'
 if not os.path.exists(daily_dir):
@@ -245,7 +247,7 @@ for date in read_dates:
 
     # The line below only reads UM files for days which also have a flight track file 
     infile=inputdir+jobid+'a.p'+ppstream+date+'*' 
-    print('Reading', infile)  # temporary
+    print('Reading', infile)
 
     # Reading all variables in the pp stream (this produces a cf.Fieldlist)
     try:
@@ -331,17 +333,6 @@ for date in read_dates:
 #   5. WRITE MONTHLY OUTPUT
 # Read daily files and write one file per month for each variable
 # If successful delete daily files
-
-# Check that the additional output directory exists and make one if not
-if 'additional_outdir' in locals() :
-    if not os.path.exists(additional_outdir):
-        try:
-            # Create one if it doesn't exist
-            os.mkdir(additional_outdir)
-        except BaseException as err:
-            # If directory cannot be written:
-            print("Error: {0}".format(err))
-            raise exception
 
 # Check if any daily files exist for that month
 all_daily_files=sorted(os.listdir(daily_dir))
